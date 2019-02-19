@@ -4,14 +4,14 @@ services:
       restart: always
 #      image: nginx
       image: jboesl/docker-nginx-headers-more
-      container_name: imdock-nginx
+      container_name: nginx-4000port
       volumes:
-          - "./etc/nginx:/etc/nginx/conf.d"
-         # - "./etc/nginx/80port.conf:/etc/nginx/conf.d/80port.conf"
-         # - "./etc/nginx/sites-module:/etc/nginx/sites-module"
+          - "./config:/etc/nginx/conf.d"
+         # - "./config/80port.conf:/etc/nginx/conf.d/80port.conf"
+          - "./config/sites-module:/etc/nginx/sites-module"
           - "./public_html:/var/www/html"
       ports:
-          - "80:80"
+          - "4000:80"
          # - "443:443"
       command: [nginx-debug, '-g', 'daemon off;']
 
